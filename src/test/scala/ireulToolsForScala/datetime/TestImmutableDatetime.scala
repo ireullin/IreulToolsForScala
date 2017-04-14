@@ -47,4 +47,26 @@ class TestImmutableDatetime extends FlatSpec with Matchers {
 
         dt1 == dt2 should be(true)
     }
+
+    it should "be correct time zone and immutable" in {
+        val dt1 = ImmutableDatetime.now
+        println(s"${dt1.toString("yyyy-MM-dd HH:mm:ss zzz ")}  ${dt1.timeZone}")
+
+        val dtutc = dt1.toUTC
+        println(s"${dt1.toString("yyyy-MM-dd HH:mm:ss zzz ")}  ${dt1.timeZone}")
+        println(s"${dtutc.toString("yyyy-MM-dd HH:mm:ss zzz ")}  ${dtutc.timeZone}")
+
+        val dtlocal = dt1.toLocalTime
+        println(s"${dtlocal.toString("yyyy-MM-dd HH:mm:ss zzz ")}  ${dtlocal.timeZone}")
+
+        val dt3 = ImmutableDatetime.readFrom("2016-10-25 16:07:21 TST", "yyyy-MM-dd HH:mm:ss zzz")
+        println(s"${dt3.toString("yyyy-MM-dd HH:mm:ss zzz ")}  ${dt3.timeZone}")
+
+        //!!!!!!!!!! it will get CEST. I don't know why ????????
+        val dt4 = ImmutableDatetime.readFrom("2016-10-25 16:07:21 UTC", "yyyy-MM-dd HH:mm:ss zzz")
+        println(s"${dt4.toString("yyyy-MM-dd HH:mm:ss zzz ")}  ${dt4.timeZone}")
+
+        val dt5 = ImmutableDatetime.readFrom("2016-10-25 16:07:21", "yyyy-MM-dd HH:mm:ss")
+        println(s"${dt5.toString("yyyy-MM-dd HH:mm:ss zzz ")}  ${dt5.timeZone}")
+    }
 }
