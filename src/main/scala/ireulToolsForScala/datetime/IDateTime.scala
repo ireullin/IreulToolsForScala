@@ -40,5 +40,15 @@ trait IDateTime {
 
     def - (v:CaseDate):IDateTime
 
+    def - (v:IDateTime):TimeInterval
+
     def == (dt: IDateTime):Boolean
+
+    def >= (dt: IDateTime):Boolean
+
+    def <= (dt: IDateTime):Boolean
+
+    def > (dt: IDateTime):Boolean
+
+    def < (dt: IDateTime):Boolean
 }

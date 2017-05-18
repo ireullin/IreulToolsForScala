@@ -129,6 +129,14 @@ private class ImmutableDatetime extends IDateTime{
 
     override def ==(dt: IDateTime):Boolean = this.stamp == dt.stamp
 
+    override def >=(dt: IDateTime):Boolean = this.stamp >= dt.stamp
+
+    override def <=(dt: IDateTime):Boolean = this.stamp <= dt.stamp
+
+    override def >(dt: IDateTime):Boolean = this.stamp > dt.stamp
+
+    override def <(dt: IDateTime):Boolean = this.stamp < dt.stamp
+
     override def + (v:CaseDate):IDateTime = {
         val dt = new ImmutableDatetime(this)
         var rc = v match {
@@ -152,5 +160,7 @@ private class ImmutableDatetime extends IDateTime{
         }
         rc
     }
+
+    override def - (v:IDateTime):TimeInterval = new TimeInterval(this.stamp - v.stamp)
 
 }
