@@ -14,7 +14,7 @@ object PostgreSqlConnection{
 }
 
 
-class PostgreSqlConnection(params:Map[String,String]) extends IConnection{
+private class PostgreSqlConnection(params:Map[String,String]) extends IConnection{
 
     private val cn = {
         val url = s"jdbc:postgresql://${params("host")}:${params.getOrElse("port","5432")}/${params("dbname")}"

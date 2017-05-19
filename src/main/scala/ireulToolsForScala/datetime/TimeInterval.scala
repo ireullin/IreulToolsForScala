@@ -8,8 +8,8 @@ class TimeInterval(stamp:Long) {
 
     lazy val partial:Partial = {
         val absStamp = Math.abs(stamp)
-        val days = (stamp / (24 * 60 * 60 * 1000)).toInt
-        val dayRem = (stamp % (24 * 60 * 60 * 1000)).toInt
+        val days = (absStamp / (24 * 60 * 60 * 1000)).toInt
+        val dayRem = (absStamp % (24 * 60 * 60 * 1000)).toInt
         val hours = dayRem / (60 * 60 * 1000)
         val hoursRem = dayRem % (60 * 60 * 1000)
         val minutes = hoursRem / (60 * 1000)
