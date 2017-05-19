@@ -8,7 +8,7 @@ import util.control.Breaks._
   */
 class TestPostgreSqlConnection extends FlatSpec with Matchers {
 
-    it should("connect correctly") in {
+    it should "connect correctly" in {
         val params = Map(
             "host" -> "10.3.197.66",
             "dbname" -> "ProductionLog",
