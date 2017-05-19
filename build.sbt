@@ -10,4 +10,5 @@ libraryDependencies += "com.fasterxml.jackson.core" % "jackson-core" % "2.8.4"
 libraryDependencies += "com.fasterxml.jackson.core" % "jackson-annotations" % "2.8.4"
 libraryDependencies += "com.fasterxml.jackson.module" % "jackson-module-paranamer" % "2.8.4"
 libraryDependencies += "com.fasterxml.jackson.module" % "jackson-module-scala_2.11" % "2.8.4"
+libraryDependencies += "org.postgresql" % "postgresql" % "9.4.1208"
 
