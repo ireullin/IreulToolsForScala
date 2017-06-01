@@ -19,7 +19,7 @@ class Row(rs:ResultSet) extends IRow{
         rc
     }
 
-    def close:Unit = rs.close()
+    def close():Unit = rs.close()
 
     override def apply(columnIndex:Int):String = rs.getString(columnIndex)
 
@@ -30,13 +30,11 @@ class Row(rs:ResultSet) extends IRow{
         catch { case e: Exception => -1 }
     }
 
+    override lazy val headers:Seq[String] = 1.to(this.size).map(i => rs.getMetaData.getColumnName(i))
+
     override def toMap:Map[String,String] = {
         val buff = new mutable.HashMap[String,String]()
-        1.to(this.size).foreach { i =>
-            val k = rs.getMetaData.getColumnName(i)
-            val v = apply(i)
-            buff.put(k,v)
-        }
+        headers.foreach(h => buff.put(h, this.apply(h)))
         buff.toMap
     }
 
